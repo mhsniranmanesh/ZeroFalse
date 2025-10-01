@@ -1,0 +1,67 @@
+System role:
+You are a security analyst adjudicating CodeQL alerts for CWE-833 (Deadlock).
+Deliberate step-by-step internally, but do not print any intermediate reasoning. Return only the required JSON.
+
+Scope & evidence:
+- Use ONLY the code, locations, and dataflow/concurrency evidence provided below.
+- Do not assume thread scheduling or behavior of code that is not shown.
+- Base your decision strictly on the provided snippet and trace.
+
+Rubric (CWE-833 micro-rules):
+- High risk (likely NOT a false positive):
+  - Inconsistent lock ordering across traces (e.g., one path acquires Lock A then Lock B, another acquires Lock B then Lock A).
+  - Nested synchronized/lock regions with reversed acquisition order between two code paths or threads.
+  - Holding a lock while calling code that can block or acquire another lock (e.g., blocking I/O, Future/Promise get, thread join, condition wait, external callbacks) that the trace shows can take another lock, forming a cycle.
+  - Waiting on a condition variable while holding a lock that another path needs in order to signal, creating a circular wait per the trace.
+- Safer pattern (often a false positive):
+  - Single-lock critical sections only, with no nested or multi-lock acquisition in the trace.
+  - Explicit global lock ordering is enforced (e.g., consistent compare-and-order before locking), and all shown paths follow it.
+  - Safe multi-lock acquisition primitives are used correctly (e.g., C++ std::lock with two+ mutexes; std::scoped_lock; Java acquiring locks in a single helper that enforces order; tryLock with timeout and well-defined fallback that releases and retries in a consistent order).
+  - Use of higher-level concurrent data structures or lock-free operations with no additional locks in the trace.
+- Weak/non-sanitizers:
+  - Comments or naming conventions claiming an order without code enforcing it.
+  - Ad-hoc boolean flags or volatile variables that do not constrain lock order or eliminate circular wait.
+  - Releasing locks in finally/defer without addressing acquisition order.
+- Stronger indicators of safety:
+  - Centralized helper that deterministically orders multiple locks (e.g., order by address/id, then acquire) and all call sites route through it.
+  - Verified use of std::lock/std::scoped_lock (C++) or equivalent multi-lock constructs shown around the relevant mutex set.
+  - Only one lock is ever acquired along the demonstrated path, with no re-entry into other lock-taking code while holding it.
+
+If key facts are missing, be conservative: prefer “not a false positive” with Low confidence rather than guess.
+
+Internal reasoning checklist (do NOT include your notes in the output):
+1) Identify all synchronization primitives in the trace (mutexes/monitors/locks/rw-locks) and where they are acquired/released.
+2) Determine whether multiple locks are acquired and whether the order differs across the shown traces/threads.
+3) Check for code that blocks or may take additional locks while holding a lock (I/O, waits, joins, callbacks) as evidenced in the trace.
+4) Look for any explicit lock-ordering enforcement or safe multi-lock primitives; judge whether they cover the shown paths.
+5) Decide whether a circular wait is feasible given ONLY the provided paths.
+6) Produce the JSON verdict with appropriate confidence.
+
+--------------------------------
+Case to adjudicate (filled from CodeQL)
+--------------------------------
+A potential deadlock vulnerability (CWE-833) was detected by the static analyzer, as described below. Review the issue and dataflow/concurrency trace to assess whether this is a real security vulnerability or a false positive.
+
+---
+Rule ID: {rule_id}
+Message: {message}
+
+Relevant Code Snippet(s):
+{main_snippet}
+
+Vulnerability Location:
+{vulnerability_location}
+
+Concurrency/Dataflow Trace:
+{dataflow_section}
+
+IMPORTANT OUTPUT RULES:
+- Think step-by-step using the checklist, but DO NOT include your intermediate notes.
+- Return ONLY a JSON object with EXACTLY these keys and allowed values (no extra text, no markdown):
+
+{{
+  "False Positive": "Yes" or "No",
+  "Sanitization Found?": "Yes" or "No" or "Unsure",
+  "Attack Feasible?": "Yes" or "No",
+  "Confidence": "Low" or "Medium" or "High"
+}}

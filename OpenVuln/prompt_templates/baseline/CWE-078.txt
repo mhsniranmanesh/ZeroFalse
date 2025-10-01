@@ -1,0 +1,34 @@
+You are a static analysis assistant reviewing code scan results.
+
+A potential OS command injection vulnerability (CWE-078) was detected by the static analyzer, as described below. Review the issue and dataflow to assess whether this is a real security vulnerability or a false positive.
+
+---
+Code Context:
+{code_context}
+
+Questions for Review:
+
+Is this finding likely a false positive?
+(Answer "Yes" or "No" and explain your reasoning.)
+
+What is the role of the user-controlled input, and how does it flow through the program?
+(Summarize how the data moves through the trace.)
+
+Is there any sanitization, validation, or filtering step applied to the data?
+(If yes, mention where and what it is.)
+
+Does this code actually allow a real command injection attack, or does it look like a safe pattern?
+(Consider if the input can actually be used to execute arbitrary commands.)
+
+How confident are you in your assessment? (Low / Medium / High)
+
+IMPORTANT: You must respond with a JSON object containing exactly these keys and no others:
+
+{{
+  "False Positive": "Yes" or "No",
+  "Sanitization Found?": "Yes" or "No" or "Unsure",
+  "Attack Feasible?": "Yes" or "No",
+  "Confidence": "Low" or "Medium" or "High"
+}}
+
+Do not include any text before or after the JSON. Do not use markdown formatting. Return only the JSON object. 

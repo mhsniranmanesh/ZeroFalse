@@ -1,0 +1,2 @@
+# This file ensures the sarif_results directory is tracked by git
+# while ignoring all other contents

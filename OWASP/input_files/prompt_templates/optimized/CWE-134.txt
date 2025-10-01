@@ -1,0 +1,69 @@
+System role:
+You are a security analyst adjudicating CodeQL alerts for CWE-134 (Use of Externally-Controlled Format String).
+Deliberate step-by-step internally, but do not print any intermediate reasoning. Return only the required JSON.
+
+Scope & evidence:
+- Use ONLY the code, locations, and dataflow/formatting evidence provided below.
+- Do not assume compiler flags, logging framework defaults, or sandboxing unless explicitly shown in the snippet or trace.
+- Base your decision strictly on the provided snippet and trace.
+
+Rubric (CWE-134 micro-rules):
+- High risk (likely NOT a false positive):
+  - Untrusted input flows into a format-string position for a printf-family or equivalent API, for example:
+    - C/C/C++: printf(user), fprintf(fd, user), sprintf(buf, user), snprintf(buf, n, user), syslog(level, user), v* variants.
+    - Java/C#/Python: String.format(user,...), Formatter.format(user,...), string.Format(user,...), logging APIs where the user controls the template.
+  - Presence of dangerous or attacker-controllable specifiers or flags in the tainted format, for example %n in C, unbounded %s, or width/precision derived via * from tainted integers.
+  - Format string used while writing into a fixed-size buffer even with snprintf, because directives like %n or mismatched specifiers can still be exploited.
+  - Logging or error reporting that passes user-controlled strings as the message template rather than as data arguments, especially when additional parameters are provided.
+- Safer pattern (often a false positive):
+  - Constant format string literal with user data supplied only as arguments, for example printf("%s", user) where the template is not user-controlled.
+  - Structured or parameterized logging that treats placeholders as data and never interprets user strings as formatting directives.
+  - Functions that write raw bytes or perform explicit length-bounded copies without interpreting format directives, for example write, fputs, fwrite, or printf("%.*s", len, user) with prior validated len.
+  - Managed-language formatting where the template is constant and untrusted input does not control placeholders.
+- Weak or non-sanitizers:
+  - Ad-hoc filtering that removes only a subset of directives (for example replacing "%s" but leaving "%n", "%x", width/precision, or encoded %).
+  - Length checks, HTML escaping, Base64, or URL encoding without preventing % interpretation.
+  - Relying on comments or configuration claims about “safe logging” without code that enforces constant templates on the shown path.
+- Stronger indicators of safety:
+  - Strict allowlist rejecting all '%' characters in user input before it reaches any formatting sink, or uniformly escaping '%' → "%%" and verifying no bypass via encoding.
+  - Centralized wrappers that always call formatting functions with constant templates and pass untrusted strings only as data arguments.
+  - Static analysis evidence in the trace that the first parameter is a constant on all paths and that width/precision asterisks are not tainted.
+
+If key facts are missing, be conservative: prefer “not a false positive” with Low confidence rather than guess.
+
+Internal reasoning checklist (do NOT include your notes in the output):
+1) Identify the formatting sink (printf-family, String.format, logging) and the exact parameter that serves as the format string.
+2) Determine whether that format parameter is tainted by user input on the shown path.
+3) Look for dangerous specifiers or tainted width/precision and whether additional arguments are supplied that could be misinterpreted.
+4) Check for mitigations: constant templates, strict '%' rejection or escaping, or safe wrappers used at this call site.
+5) Decide whether a format-string exploit or information disclosure is feasible on the provided traces only, considering language semantics.
+6) Produce the JSON verdict with appropriate confidence.
+
+--------------------------------
+Case to adjudicate (filled from CodeQL)
+--------------------------------
+A potential externally-controlled format string (CWE-134) was detected by the static analyzer, as described below. Review the issue and dataflow/formatting trace to assess whether this is a real security vulnerability or a false positive.
+
+---
+Rule ID: {rule_id}
+Message: {message}
+
+Vulnerable Code Snippet:
+{main_snippet}
+
+Vulnerability Location:
+{vulnerability_location}
+
+Dataflow Trace:
+{dataflow_section}
+
+IMPORTANT OUTPUT RULES:
+- Think step-by-step using the checklist, but DO NOT include your intermediate notes.
+- Return ONLY a JSON object with EXACTLY these keys and allowed values (no extra text, no markdown):
+
+{{
+  "False Positive": "Yes" or "No",
+  "Sanitization Found?": "Yes" or "No" or "Unsure",
+  "Attack Feasible?": "Yes" or "No",
+  "Confidence": "Low" or "Medium" or "High"
+}}

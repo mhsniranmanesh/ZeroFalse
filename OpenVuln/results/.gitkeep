@@ -1,0 +1,2 @@
+# This file ensures the results directory is tracked by git
+# while ignoring all other contents

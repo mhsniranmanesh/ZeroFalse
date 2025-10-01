@@ -1,0 +1,463 @@
+# ZeroFalse - Research Framework for LLM-based Static Analysis
+
+# =============================================================================
+# Python
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# =============================================================================
+# Java / Maven
+# =============================================================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# =============================================================================
+# IDE and Editor files
+# =============================================================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =============================================================================
+# OS generated files
+# =============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# Project-specific generated files and directories
+# =============================================================================
+
+# OWASP Results and Generated Data
+OWASP/results/*
+!OWASP/results/.gitkeep
+OWASP/dashboard-data/*
+!OWASP/dashboard-data/.gitkeep
+OWASP/dashboard-data_backup/*
+!OWASP/dashboard-data_backup/.gitkeep
+
+# OpenVuln Results
+OpenVuln/results/*
+!OpenVuln/results/.gitkeep
+
+# Input files (generated during analysis)
+**/input_files/sarif_results/*
+!**/input_files/sarif_results/.gitkeep
+
+# Configuration files with sensitive data
+*.ini
+config.ini
+.env
+.env.local
+.env.*.local
+
+# API Keys and Secrets
+*api*key*
+*secret*
+*password*
+*token*
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Log files
+*.log
+logs/
+log/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Cache directories
+.cache/
+cache/
+__pycache__/
+
+# Backup files
+*.bak
+*.backup
+*_backup/
+backup/
+
+# =============================================================================
+# Research Data and Generated Files
+# =============================================================================
+
+# Large generated datasets and results
+# Note: Keep important research data but ignore large generated files
+
+# Model response files (generated during analysis)
+*_response.json
+*_response.txt
+*_prompt.txt
+*_analysis.txt
+*_results.txt
+
+# Parsed results from model analysis
+parsed_results.jsonl
+*_parsed_results.jsonl
+
+# Evaluation and analysis results
+evaluation_*.csv
+*_evaluation.csv
+openrouter_prompts_responses.csv
+
+# Generated reports and summaries
+*_report.*
+*_summary.*
+*_evaluation.*
+
+# Large result directories (uncomment if you want to ignore them)
+# OWASP/results/
+# OpenVuln/results/
+# OWASP/dashboard-data/
+
+# Keep important research data files
+!**/ground_truth.csv
+!**/Projects_info.csv
+!**/baseline_overall.csv
+!**/optimized_overall.csv
+!**/sample/
+
+# Additional research-specific patterns
+# Ignore large model output files but keep sample data
+**/responses/
+**/BenchmarkTest*.txt
+
+# Ignore individual model analysis results but keep aggregated data
+**/CWE-*/**/parsed_results.jsonl
+**/CWE-*/**/evaluation_*.csv
+
+# Keep important SARIF files for analysis
+!**/sarif-files/*.sarif
+
+# Keep prompt templates
+!**/prompt_templates/*.txt
+
+# =============================================================================
+# Streamlit
+# =============================================================================
+.streamlit/
+
+# =============================================================================
+# Jupyter
+# =============================================================================
+.ipynb_checkpoints/
+
+# =============================================================================
+# Data Science
+# =============================================================================
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+
+# =============================================================================
+# Documentation build
+# =============================================================================
+docs/_build/
+site/
+
+# =============================================================================
+# Testing
+# =============================================================================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# =============================================================================
+# Package managers
+# =============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =============================================================================
+# Docker
+# =============================================================================
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.yaml
+
+# =============================================================================
+# Git
+# =============================================================================
+*.orig
+*.rej
+
+# =============================================================================
+# Custom project ignores
+# =============================================================================
+
+# Ignore specific large directories that are generated
+# Uncomment these if you want to ignore the entire directories
+# OWASP/results/
+# OWASP/dashboard-data/
+# OWASP/dashboard-data_backup/
+# OpenVuln/results/
+
+# Keep important configuration templates but ignore actual configs
+!config.ini.example
+!*.template
+!*.example
+
+# Keep README and documentation
+!README.md
+!*.md
+!LICENSE
+!LICENSE.*
+
+# Keep source code
+!*.py
+!*.java
+!*.xml
+!*.sh
+
+# Keep assets
+!assets/
+!assets/**
+
+# Keep prompt templates and ground truth
+!**/prompt_templates/
+!**/ground_truth/
+!**/input_files/
+!**/sarif-files/
+!**/code-context/
+
+# Keep important research configuration and template files
+!**/config.ini.example
+!**/*.template
+!**/*.example
