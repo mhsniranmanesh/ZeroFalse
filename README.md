@@ -13,7 +13,11 @@ A research framework for evaluating Large Language Models (LLMs) in false positi
 
 ## Overview
 
-ZeroFalse combines static analysis with LLMs for security vulnerability detection and false positive reduction. The framework evaluates the effectiveness of various LLMs in reducing false positives from static analysis tools. This figure shows the complete pipeline flow from static analysis results through LLM processing to evaluation metrics: <img src="assets/images/pipeline_overview.png" alt="ZeroFalse Pipeline Overview" width="600">
+ZeroFalse combines static analysis with LLMs for security vulnerability detection and false positive reduction. The framework evaluates the effectiveness of various LLMs in reducing false positives from static analysis tools. This figure shows the complete pipeline flow from static analysis results through LLM processing to evaluation metrics: 
+
+<div align="center">
+  <img src="assets/images/pipeline_overview.png" alt="ZeroFalse Pipeline Overview" width="600">
+</div>
 
 ### Key Features
 
@@ -134,7 +138,10 @@ python run_dashboard.py
 
 ## Dashboard
 
-ZeroFalse includes an interactive Streamlit dashboard for visualizing analysis results and model performance. The dashboard provides a dark theme interface with detailed model comparison views as shown here: <img src="assets/images/dashboard_preview_dark.png" alt="Dashboard Preview" width="600">
+ZeroFalse includes an interactive Streamlit dashboard for visualizing analysis results and model performance. The dashboard provides a dark theme interface with detailed model comparison views as shown here: 
+<div align="center">
+  <img src="assets/images/dashboard_preview_dark.png" alt="Dashboard Preview" width="600">
+</div>
 
 ### Dashboard Features
 - **Model Comparison**: Side-by-side comparison of different LLM models
@@ -151,14 +158,24 @@ Both projects evaluate models using:
 2. **Recall**: True positives / (True positives + False negatives)
 3. **F1-Score**: Harmonic mean of precision and recall
 
-The performance comparison across different LLM models shows F1-scores and precision/recall metrics: <img src="assets/images/model_comparison.png" alt="Model Performance Comparison" width="600">
+The performance comparison across different LLM models shows F1-scores and precision/recall metrics: 
+<div align="center">
+  <img src="assets/images/model_comparison.png" alt="Model Performance Comparison" width="600">
+</div>
 
-A heatmap visualization demonstrates model performance across different CWE categories: <img src="assets/images/CWE_results.png" alt="CWE Results Heatmap" width="600">
+A heatmap visualization demonstrates model performance across different CWE categories: 
+<div align="center">
+  <img src="assets/images/CWE_results.png" alt="CWE Results Heatmap" width="600">
+</div>
 
-The trade-off analysis between F1-score, cost, and latency for different models is illustrated here: <img src="assets/images/f1_cost_latency_results.png" alt="F1-Cost-Latency Analysis" width="600">
-
-Finally, this comparison shows the effectiveness of baseline versus optimized prompt templates: <img src="assets/images/prompt_improvement_results.png" alt="Prompt Improvement Results" width="600">
-
+The trade-off analysis between F1-score, cost, and latency for different models is illustrated here: 
+<div align="center">
+  <img src="assets/images/f1_cost_latency_results.png" alt="F1-Cost-Latency Analysis" width="600">
+</div>
+Finally, this comparison shows the effectiveness of baseline versus optimized prompt templates: 
+<div align="center">
+  <img src="assets/images/prompt_improvement_results.png" alt="Prompt Improvement Results" width="600">
+</div>
 ## Repository Structure
 
 ```
