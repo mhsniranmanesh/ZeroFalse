@@ -176,6 +176,7 @@ Finally, this comparison shows the effectiveness of baseline versus optimized pr
 <div align="center">
   <img src="assets/images/prompt_improvement_results.png" alt="Prompt Improvement Results" width="600">
 </div>
+
 ## Repository Structure
 
 ```
