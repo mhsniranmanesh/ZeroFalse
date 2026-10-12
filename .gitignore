@@ -258,9 +258,9 @@ OWASP/results/**/prompts/
 OWASP/results/**/responses/
 OWASP/dashboard-data_backup/
 
-# Legacy OpenVuln (arXiv v1) results
-legacy/OpenVuln-arxiv-v1/results/*
-!legacy/OpenVuln-arxiv-v1/results/.gitkeep
+# Dashboard input is generated from results/ by scripts/build_dashboard_data.sh
+OWASP/dashboard-data/*
+!OWASP/dashboard-data/.gitkeep
 
 # Configuration files with sensitive data
 *.ini
@@ -323,7 +323,6 @@ parsed_results.jsonl
 
 # Large result directories (uncomment if you want to ignore them)
 # OWASP/results/
-# OpenVuln/results/
 # OWASP/dashboard-data/
 
 # Keep important research data files

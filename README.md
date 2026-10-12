@@ -12,7 +12,7 @@
 
 A research framework for evaluating Large Language Models (LLMs) in false positive reduction across multiple vulnerability datasets and CWE categories.
 
-> **Updated for arXiv v2.** The real-world evaluation now uses **CWE-bench** (drawn from the IRIS evaluation corpus) and replaces the 7-project OpenVuln dataset used in arXiv v1. OpenVuln is kept unchanged under [`legacy/OpenVuln-arxiv-v1/`](legacy/OpenVuln-arxiv-v1/) for reference. See [What changed since v1](#what-changed-since-v1).
+> **Updated for arXiv v2.** The real-world evaluation now uses **CWE-bench** (drawn from the IRIS evaluation corpus) and replaces the 7-project OpenVuln dataset used in arXiv v1. OpenVuln has been removed from this repository; it is still available in the git history (commit [`3ca00e4`](https://github.com/mhsniranmanesh/ZeroFalse/tree/3ca00e4)). See [What changed since v1](#what-changed-since-v1).
 
 ## Overview
 
@@ -155,13 +155,14 @@ python run_parallel_analysis.py \
     --cwes CWE-022 CWE-078 CWE-079 \
     --threads 4
 
-# Launch dashboard
+# Launch dashboard (first populate dashboard-data/ from results/)
+./scripts/build_dashboard_data.sh
 python run_dashboard.py
 ```
 
 ## Dashboard
 
-ZeroFalse includes an interactive Streamlit dashboard for visualizing analysis results and model performance. It reads the per-alert evaluation files in `OWASP/dashboard-data/`. The dashboard provides a dark theme interface with detailed model comparison views, as shown here:
+ZeroFalse includes an interactive Streamlit dashboard for visualizing analysis results and model performance. It reads per-alert evaluation files from `OWASP/dashboard-data/`. Populate that folder from the published results with `OWASP/scripts/build_dashboard_data.sh`. The dashboard provides a dark theme interface with detailed model comparison views, as shown here:
 <div align="center">
   <img src="assets/images/dashboard_preview_dark.png" alt="Dashboard Preview" width="600">
 </div>
@@ -233,9 +234,8 @@ ZeroFalse/
 │   ├── run_parallel_analysis.py         # Parallel analysis runner
 │   ├── input_files/                     # Ground truth, prompt templates, CodeQL SARIF per CWE
 │   ├── results/                         # {baseline,optimized}/<CWE>/<model>/evaluation_*.csv
-│   └── dashboard-data/                  # Per-model, per-CWE evaluation CSVs used by the dashboard
-├── legacy/
-│   └── OpenVuln-arxiv-v1/               # Dataset and scripts used in arXiv v1 (superseded)
+│   ├── scripts/build_dashboard_data.sh  # Populates dashboard-data/ from results/
+│   └── dashboard-data/                  # Dashboard input (generated, not tracked)
 └── assets/images/                       # Figures used in this README
 ```
 
@@ -252,7 +252,7 @@ The repository contains everything needed to recompute the reported metrics: SAR
 | Real-world dataset | OpenVuln: 58 alerts, 7 projects | CWE-bench: 755 labelled alerts, 56 project–CVE pairs, 37 repositories (IRIS corpus) |
 | Real-world labelling | Patch-intersection heuristic | Manual adjudication by three security researchers |
 | OWASP Benchmark | 10 CWEs, 10 LLMs | Unchanged |
-| Code location | `OpenVuln/` | `CWE-bench/` (OpenVuln moved to `legacy/OpenVuln-arxiv-v1/`) |
+| Code location | `OpenVuln/` | `CWE-bench/` (OpenVuln removed; see commit `3ca00e4`) |
 
 ## Configuration
 
