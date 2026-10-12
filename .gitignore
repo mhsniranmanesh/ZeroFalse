@@ -252,21 +252,15 @@ $RECYCLE.BIN/
 # Project-specific generated files and directories
 # =============================================================================
 
-# OWASP Results and Generated Data
-OWASP/results/*
-!OWASP/results/.gitkeep
-OWASP/dashboard-data/*
-!OWASP/dashboard-data/.gitkeep
-OWASP/dashboard-data_backup/*
-!OWASP/dashboard-data_backup/.gitkeep
+# OWASP raw per-alert outputs (published in the GitHub release archive instead;
+# the per-alert evaluation CSVs used to compute every metric ARE tracked)
+OWASP/results/**/prompts/
+OWASP/results/**/responses/
+OWASP/dashboard-data_backup/
 
-# OpenVuln Results
-OpenVuln/results/*
-!OpenVuln/results/.gitkeep
-
-# Input files (generated during analysis)
-**/input_files/sarif_results/*
-!**/input_files/sarif_results/.gitkeep
+# Legacy OpenVuln (arXiv v1) results
+legacy/OpenVuln-arxiv-v1/results/*
+!legacy/OpenVuln-arxiv-v1/results/.gitkeep
 
 # Configuration files with sensitive data
 *.ini
@@ -314,9 +308,8 @@ backup/
 # Large generated datasets and results
 # Note: Keep important research data but ignore large generated files
 
-# Model response files (generated during analysis)
-*_response.json
-*_response.txt
+# Model prompt files (large; reconstructible from templates + code context,
+# and included in the GitHub release archive)
 *_prompt.txt
 *_analysis.txt
 *_results.txt
@@ -325,15 +318,8 @@ backup/
 parsed_results.jsonl
 *_parsed_results.jsonl
 
-# Evaluation and analysis results
-evaluation_*.csv
-*_evaluation.csv
-openrouter_prompts_responses.csv
-
-# Generated reports and summaries
+# Generated reports
 *_report.*
-*_summary.*
-*_evaluation.*
 
 # Large result directories (uncomment if you want to ignore them)
 # OWASP/results/
@@ -352,9 +338,8 @@ openrouter_prompts_responses.csv
 **/responses/
 **/BenchmarkTest*.txt
 
-# Ignore individual model analysis results but keep aggregated data
+# Ignore large parsed model outputs (in the release archive)
 **/CWE-*/**/parsed_results.jsonl
-**/CWE-*/**/evaluation_*.csv
 
 # Keep important SARIF files for analysis
 !**/sarif-files/*.sarif
@@ -426,8 +411,6 @@ docker-compose.yaml
 # Uncomment these if you want to ignore the entire directories
 # OWASP/results/
 # OWASP/dashboard-data/
-# OWASP/dashboard-data_backup/
-# OpenVuln/results/
 
 # Keep important configuration templates but ignore actual configs
 !config.ini.example
