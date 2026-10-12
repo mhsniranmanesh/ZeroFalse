@@ -1,0 +1,23 @@
+test_name,response_file,ground_truth_category,ground_truth_is_vulnerable,ground_truth_cwe,ground_truth_expected,llm_Attack Feasible?,llm_Confidence,llm_False Positive,llm_Sanitization Found?
+BenchmarkTest00207,BenchmarkTest00207_java_java_xml_xpath-injection_1_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01734,BenchmarkTest01734_java_java_xml_xpath-injection_13_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest00442,BenchmarkTest00442_java_java_xml_xpath-injection_2_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest02370,BenchmarkTest02370_java_java_xml_xpath-injection_20_o4-mini.txt,xpathi,False,643,Safe,No,High,Yes,Yes
+BenchmarkTest01892,BenchmarkTest01892_java_java_xml_xpath-injection_15_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest02189,BenchmarkTest02189_java_java_xml_xpath-injection_19_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest00607,BenchmarkTest00607_java_java_xml_xpath-injection_3_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01562,BenchmarkTest01562_java_java_xml_xpath-injection_11_o4-mini.txt,xpathi,False,643,Safe,No,High,Yes,Yes
+BenchmarkTest01224,BenchmarkTest01224_java_java_xml_xpath-injection_7_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01014,BenchmarkTest01014_java_java_xml_xpath-injection_5_o4-mini.txt,xpathi,False,643,Safe,No,High,Yes,No
+BenchmarkTest02100,BenchmarkTest02100_java_java_xml_xpath-injection_18_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest02457,BenchmarkTest02457_java_java_xml_xpath-injection_21_o4-mini.txt,xpathi,False,643,Safe,No,High,Yes,Yes
+BenchmarkTest00116,BenchmarkTest00116_java_java_xml_xpath-injection_0_o4-mini.txt,xpathi,False,643,Safe,No,High,Yes,No
+BenchmarkTest01316,BenchmarkTest01316_java_java_xml_xpath-injection_8_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01736,BenchmarkTest01736_java_java_xml_xpath-injection_14_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01974,BenchmarkTest01974_java_java_xml_xpath-injection_17_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01561,BenchmarkTest01561_java_java_xml_xpath-injection_10_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01894,BenchmarkTest01894_java_java_xml_xpath-injection_16_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest01632,BenchmarkTest01632_java_java_xml_xpath-injection_12_o4-mini.txt,xpathi,False,643,Safe,No,High,Yes,No
+BenchmarkTest01478,BenchmarkTest01478_java_java_xml_xpath-injection_9_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No
+BenchmarkTest00852,BenchmarkTest00852_java_java_xml_xpath-injection_4_o4-mini.txt,xpathi,False,643,Safe,No,High,Yes,No
+BenchmarkTest01223,BenchmarkTest01223_java_java_xml_xpath-injection_6_o4-mini.txt,xpathi,True,643,Vulnerable,Yes,High,No,No

@@ -1,0 +1,30 @@
+OpenRouter Prompt Generation Summary
+===================================
+
+Model Used: openai/gpt-oss-120b
+Total projects processed: 23
+Total alerts processed: 227
+Unique CWEs: 3
+Unique CVEs: 23
+
+Token Usage:
+  Total tokens: 4,039,089
+  Prompt tokens: 3,870,233
+  Completion tokens: 168,856
+
+CWE Distribution:
+  CWE-022: 117 alerts
+  CWE-079: 101 alerts
+  CWE-078: 9 alerts
+
+Project Distribution:
+  keycloak__keycloak_CVE-2022-1274_20.0.4: 35 alerts
+  keycloak__keycloak_CVE-2022-4137_20.0.4: 35 alerts
+  apache__myfaces_CVE-2011-4367_2.0.11: 26 alerts
+  keycloak__keycloak_CVE-2022-4361_21.1.1: 19 alerts
+  keycloak__keycloak_CVE-2022-3782_20.0.1: 16 alerts
+  apache__tika_CVE-2018-11762_1.18: 13 alerts
+  perwendel__spark_CVE-2016-9177_2.5.1: 12 alerts
+  perwendel__spark_CVE-2018-9159_2.7.1: 11 alerts
+  apache__jspwiki_CVE-2022-46907_2.11.3: 10 alerts
+  apache__nifi_CVE-2022-33140_1.16.2: 9 alerts
